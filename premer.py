@@ -1,3 +1,5 @@
+import requests
+
 #nom= input("quel est votre nom ? ")
 #age=input("quel est votre age ? ")
 #print("Mon nom c'est " + nom  +" ,et j'ai " + age + "ans" )
@@ -80,9 +82,54 @@ nombre= int(input("donner un nombre: "))
 if nombre % 2 == 0:
    print(f"{nombre} est paire ")
 else:
-   print(f"{nombre} est impaire ") """
-   
+   print(f"{nombre} est impaire ")
 
+#un exercice en utiliant les api ,url...Pour cette exercice je vais creer un script python qui permet de telecharger
+# une video dans youtube et le mettre dans mon pc
+
+
+
+
+#reccuperer un fait aleatoir sur le chats
+url= f"https://catfact.ninja/fact"
+
+reponse= requests.get(url)
+print(reponse.json())
+
+
+
+#reccuperer un nombre aleatoir
+url=f"https://www.randomnumberapi.com/api/v1.0/random"
+reponse=requests.get(url)
+print(reponse.json())
+
+#deviver un prenom
+prenom=input("donner un prenom:")
+url=f"https://api.agify.io?name=Fatou"
+reponse=requests.get(url)
+#print(reponse.json())
+resultat=reponse.json()
+if resultat["name"]==prenom:
+   print("Bravo vous avez devine le nom!!",prenom)
+else:
+   print("Vous avez pas trouve le bon nom! ")"""
+   
+   
+#reccuperer les informations d'un pays via un code pays comme FR,US,SN
+code=input("donner un code d'un pays sous ce format FR,US... :")
+url=f"https://restcountries.com/v3.1/alpha/{code}"
+resultat =requests.get(url)
+#print(resultat.json())
+R=resultat.json()
+Name=R[0]["name"]["official"]
+Capital=R[0]["capital"][0]
+Population=R[0]["population"]
+
+print("les informations sur le code de pays ",code)
+print("Le nom officiel du pays c'est ",Name)
+print("La capital est ",Capital)
+print("La population est de ",Population)
+   
 
      
 
